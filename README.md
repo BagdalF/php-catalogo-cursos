@@ -1,41 +1,41 @@
-# PHP Catalog of Courses
+# Catálogo de Cursos em PHP
 
-## Project Overview
-This project is a simple PHP application that serves as a catalog for various courses. Users can view a list of courses, see detailed information about each course, and filter courses by category.
+## Visão Geral do Projeto
 
-## File Structure
+Este projeto é uma aplicação PHP que funciona como um catálogo de diversos cursos. Os usuários podem visualizar uma lista de cursos, ver informações detalhadas sobre cada curso, filtrar cursos por categoria e gerenciar dados de cursos através de uma área protegida.
+
+## Funcionalidades
+
+- **Catálogo de Cursos**: Exibe uma lista de cursos com imagens, títulos e categorias.
+- **Detalhes do Curso**: Cada curso possui uma página dedicada mostrando informações detalhadas.
+- **Filtragem**: Os usuários podem filtrar cursos por categoria em `filtro.php`.
+- **Autenticação de Usuário**: Um sistema de login restringe o acesso à área protegida (`login.php` e `protected.php`).
+- **Área Protegida**: Usuários autenticados podem adicionar novos cursos e visualizar a lista de cursos cadastrados em `protected.php`.
+
+## Estrutura de Arquivos
+
 ```
 php-catalogo-cursos
 ├── data
 │   └── items.php
+├── includes
+│   ├── footer.php
+│   └── header.php
+├── functions
+│   └── helpers.php
 ├── styles.css
 ├── index.php
 ├── details.php
-├── README.md
-├── filter.php
+├── filtro.php
 ├── login.php
 ├── protected.php
-└── functions.php
+├── README.md
+└── .gitignore
 ```
 
-## Setup Instructions
-1. **Clone the repository** or download the project files to your local machine.
-2. **Ensure you have a local server** (like XAMPP, WAMP, or MAMP) running PHP.
-3. **Place the project folder** in the server's root directory (e.g., `htdocs` for XAMPP).
-4. **Access the application** by navigating to `http://localhost/php-catalogo-cursos/index.php` in your web browser.
+## Instruções de Configuração
 
-## Features
-- **Catalog of Courses**: Displays a list of courses with images, titles, and categories.
-- **Course Details**: Each course has a dedicated page showing detailed information.
-- **Filtering**: Users can filter courses by category (to be implemented in `filter.php`).
-- **User Authentication**: A login system to restrict access to certain features (to be implemented in `login.php` and `protected.php`).
-
-## Additional Information
-- The project uses a simple array structure in `data/items.php` to manage course data.
-- CSS styles are defined in `styles.css`, and Bootstrap can be included for responsive design.
-- Auxiliary functions are stored in `functions.php` for reusability across the application.
-
-## Future Enhancements
-- Implement filtering functionality in `filter.php`.
-- Add user authentication and session management in `login.php` and `protected.php`.
-- Expand the course data structure to include more attributes as needed.
+1. **Clone o repositório** ou baixe os arquivos do projeto para sua máquina local.
+2. **Certifique-se de ter um servidor local** (como XAMPP, WAMP ou MAMP) rodando PHP.
+3. **Coloque a pasta do projeto** no diretório raiz do servidor (por exemplo, `htdocs` para XAMPP).
+4. **Acesse a aplicação** navegando para `http://localhost/php-catalogo-cursos/index.php` no seu navegador.

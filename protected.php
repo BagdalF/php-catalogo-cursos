@@ -34,45 +34,52 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $items = $_SESSION['items'];
 ?>
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Protegida</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <a href="index.php" class="btn">Voltar ao Catálogo</a>
-    <h1>Página Protegida</h1>
-    <p>Bem-vindo, <?php echo htmlspecialchars($_SESSION['username']); ?>!</p>
-    <h2>Cadastrar Novo Curso</h2>
-    <form method="POST" action="protected.php">
-        <label for="title">Título:</label>
-        <input type="text" id="title" name="title" required>
-        <br>
-        <label for="image">URL da Imagem:</label>
-        <input type="text" id="image" name="image" required>
-        <br>
-        <label for="category">Categoria:</label>
-        <input type="text" id="category" name="category" required>
-        <br>
-        <label for="description">Descrição:</label>
-        <textarea id="description" name="description" required></textarea>
-        <br>
-        <button type="submit" class="btn">Cadastrar</button>
+<?php
+include 'includes/header.php';
+?>
+
+<div class="container mt-4">
+    <a href="index.php" class="btn btn-secondary mb-3">Voltar ao Catálogo</a>
+    <h1 class="text-center">Página Protegida</h1>
+    <p class="text-center">Bem-vindo, <?php echo htmlspecialchars($_SESSION['username']); ?>!</p>
+    <h2 class="mt-4">Cadastrar Novo Curso</h2>
+    <form method="POST" action="protected.php" class="mt-3">
+        <div class="mb-3">
+            <label for="title" class="form-label">Título:</label>
+            <input type="text" id="title" name="title" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="image" class="form-label">URL da Imagem:</label>
+            <input type="text" id="image" name="image" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="category" class="form-label">Categoria:</label>
+            <input type="text" id="category" name="category" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Descrição:</label>
+            <textarea id="description" name="description" class="form-control" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
     </form>
 
-    <h2>Itens Cadastrados</h2>
-    <div class="catalog">
+    <h2 class="mt-4">Itens Cadastrados</h2>
+    <div class="row">
         <?php foreach ($items as $item): ?>
-            <div class="catalog-item">
-                <img src="<?php echo $item['image']; ?>" alt="<?php echo $item['title']; ?>">
-                <h2><?php echo $item['title']; ?></h2>
-                <p>Categoria: <?php echo $item['category']; ?></p>
-                <p><?php echo $item['description']; ?></p>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="<?php echo $item['image']; ?>" class="card-img-top" alt="<?php echo $item['title']; ?>">
+                <div class="card-body">
+                    <h5 class="card-title"><?php echo $item['title']; ?></h5>
+                    <p class="card-text">Categoria: <?php echo $item['category']; ?></p>
+                    <p class="card-text">Descrição: <?php echo $item['description']; ?></p>
+                </div>
             </div>
+        </div>
         <?php endforeach; ?>
     </div>
-</body>
-</html>
+</div>
+
+<?php
+include 'includes/footer.php';
+?>

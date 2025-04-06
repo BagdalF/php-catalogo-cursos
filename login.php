@@ -12,39 +12,52 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Valida o nome de usuário e a senha
     if ($username === $fixed_username && password_verify($password, $fixed_password_hash)) {
-        // Inicia a sessão
+        session_regenerate_id(true); // Garante uma nova sessão para evitar fixação de sessão
         $_SESSION['logged_in'] = true;
         $_SESSION['username'] = $username;
 
-        // Redireciona para uma página protegida (exemplo: dashboard.php)
-        header('Location: dashboard.php');
+        // Redireciona para a página inicial
+        header('Location: index.php');
         exit;
     } else {
         $error_message = 'Nome de usuário ou senha inválidos.';
     }
 }
+include 'includes/header.php';
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
 </head>
+
 <body>
-    <h1>Login</h1>
-    <?php if (!empty($error_message)): ?>
-        <p style="color: red;"><?php echo htmlspecialchars($error_message); ?></p>
-    <?php endif; ?>
-    <form method="POST" action="">
-        <label for="username">Nome de Usuário:</label>
-        <input type="text" id="username" name="username" required>
-        <br>
-        <label for="password">Senha:</label>
-        <input type="password" id="password" name="password" required>
-        <br>
-        <button type="submit">Entrar</button>
-    </form>
+    <div class="container mt-4">
+        <h1 class="text-center">Login</h1>
+        <?php if (!empty($error_message)): ?>
+        <div class="alert alert-danger" role="alert">
+            <?php echo htmlspecialchars($error_message); ?>
+        </div>
+        <?php endif; ?>
+        <form method="POST" action="" class="mt-4">
+            <div class="mb-3">
+                <label for="username" class="form-label">Nome de Usuário:</label>
+                <input type="text" id="username" name="username" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Senha:</label>
+                <input type="password" id="password" name="password" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Entrar</button>
+        </form>
+    </div>
+    <?php include 'includes/footer.php'; ?>
 </body>
+
 </html>
