@@ -8,7 +8,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'] ?? '';
     $password = $_POST['password'] ?? '';
 
-    // Valida o nome de usuário e a senha
     if ($username === $fixed_username && password_verify($password, $fixed_password_hash)) {
         $_SESSION['logged_in'] = true;
         $_SESSION['username'] = $username;

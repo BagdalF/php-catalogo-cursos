@@ -5,7 +5,6 @@ include 'data/items.php';
 include 'functions/helpers.php';
 include 'includes/header.php';
 
-// Use session-stored items if available
 $items = $_SESSION['items'] ?? $items;
 
 $category = isset($_GET['category']) ? $_GET['category'] : '';

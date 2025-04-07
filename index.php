@@ -5,20 +5,15 @@ include 'data/items.php';
 include 'includes/header.php';
 include 'functions/helpers.php';
 
-// Use session-stored items if available
 $items = $_SESSION['items'] ?? $items;
 ?>
 
-<!-- <?php var_dump($_SESSION) ?> -->
-
 <div class="container mt-4 h-100">
-    <!-- Hero Section -->
     <div class="hero text-center p-5 rounded">
         <h1 class="display-4">Bem-vindo ao SkillForge</h1>
         <p class="lead">Explore os melhores cursos de tecnologia e design, criados para elevar suas habilidades ao próximo nível.</p>
     </div>
 
-    <!-- SkillForge -->
     <div class="row">
         <?php foreach ($items as $item): ?>
         <div class="col-md-4 mb-4">
