@@ -6,7 +6,7 @@ Este projeto é uma aplicação PHP que funciona como um catálogo de diversos c
 
 ## Funcionalidades
 
-- **SkillForge**: Exibe uma lista de cursos com imagens, títulos e categorias.
+- **Catálogo de Cursos**: Exibe uma lista de cursos com imagens, títulos e categorias.
 - **Detalhes do Curso**: Cada curso possui uma página dedicada mostrando informações detalhadas.
 - **Filtragem**: Os usuários podem filtrar cursos por categoria em `filtro.php`.
 - **Autenticação de Usuário**: Um sistema de login restringe o acesso à área protegida (`login.php` e `protected.php`).
