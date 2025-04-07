@@ -1,7 +1,12 @@
 <?php
+session_start();
+
 include 'data/items.php';
 include 'includes/header.php';
 include 'functions/helpers.php';
+
+// Use session-stored items if available
+$items = $_SESSION['items'] ?? $items;
 ?>
 
 <!-- <?php var_dump($_SESSION) ?> -->
@@ -13,7 +18,7 @@ include 'functions/helpers.php';
         <p class="lead">Explore os melhores cursos de tecnologia e design, criados para elevar suas habilidades ao próximo nível.</p>
     </div>
 
-    <!-- Catálogo de Cursos -->
+    <!-- SkillForge -->
     <div class="row">
         <?php foreach ($items as $item): ?>
         <div class="col-md-4 mb-4">

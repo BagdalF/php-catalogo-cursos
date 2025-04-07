@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 $fixed_username = 'admin';
 $fixed_password_hash = password_hash('123456', PASSWORD_DEFAULT); // Substitua '123456' pela senha desejada

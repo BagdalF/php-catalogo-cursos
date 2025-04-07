@@ -1,19 +1,16 @@
 <?php
 session_start();
 
-// Verifica se o usuário está logado
 if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
     header('Location: login.php');
     exit;
 }
 
-// Inicializa os itens na sessão, se ainda não estiverem definidos
 if (!isset($_SESSION['items'])) {
     include 'data/items.php';
     $_SESSION['items'] = $items;
 }
 
-// Processa o formulário de cadastro de novos itens
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $newItem = [
         'id' => count($_SESSION['items']) + 1,
@@ -23,10 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'description' => $_POST['description'] ?? '',
     ];
 
-    // Adiciona o novo item ao array de itens na sessão
     $_SESSION['items'][] = $newItem;
-
-    // Redireciona para evitar reenvio do formulário
     header('Location: protected.php');
     exit;
 }
