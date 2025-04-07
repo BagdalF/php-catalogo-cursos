@@ -1,22 +1,17 @@
 <?php
-session_start();
 
-// Nome de usuário e senha fixos (senha armazenada como hash)
 $fixed_username = 'admin';
 $fixed_password_hash = password_hash('123456', PASSWORD_DEFAULT); // Substitua '123456' pela senha desejada
 
-// Verifica se o formulário foi enviado
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'] ?? '';
     $password = $_POST['password'] ?? '';
 
     // Valida o nome de usuário e a senha
     if ($username === $fixed_username && password_verify($password, $fixed_password_hash)) {
-        session_regenerate_id(true); // Garante uma nova sessão para evitar fixação de sessão
         $_SESSION['logged_in'] = true;
         $_SESSION['username'] = $username;
 
-        // Redireciona para a página inicial
         header('Location: index.php');
         exit;
     } else {
