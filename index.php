@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 include 'data/items.php';
 include 'includes/header.php';
 include 'functions/helpers.php';
