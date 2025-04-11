@@ -3,7 +3,6 @@ session_start();
 
 include 'data/items.php';
 include 'functions/helpers.php';
-include 'includes/header.php';
 
 $itemId = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 
@@ -18,11 +17,14 @@ foreach ($items as $i) {
 if (!$item) {
     redirect('index.php');
 }
+
+include 'includes/header.php';
 ?>
 
 <div class="container mt-4">
     <div class="card">
-        <img src="<?php echo escape($item['image']); ?>" class="card-img-top" alt="<?php echo escape($item['title']); ?>">
+        <img src="<?php echo escape($item['image']); ?>" class="card-img-top"
+            style="max-height: 330px; object-fit: cover;" alt="<?php echo escape($item['title']); ?>">
         <div class="card-body">
             <h5 class="card-title"><?php echo escape($item['title']); ?></h5>
             <p class="card-text">Categoria: <?php echo escape($item['category']); ?></p>

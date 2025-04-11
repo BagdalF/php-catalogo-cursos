@@ -3,7 +3,6 @@ session_start();
 
 include 'data/items.php';
 include 'functions/helpers.php';
-include 'includes/header.php';
 
 if (!isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
     header('Location: login.php');
@@ -30,6 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $items = $_SESSION['items'];
+
+include 'includes/header.php';
 ?>
 
 <div class="container mt-4">
@@ -60,22 +61,20 @@ $items = $_SESSION['items'];
     <h2 class="mt-4">Itens Cadastrados</h2>
     <div class="row">
         <?php foreach ($items as $item): ?>
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <img src="<?php echo escape($item['image']); ?>" class="card-img-top object-fit-cover"
-                    alt="<?php echo escape($item['title']); ?>" width="100%" height="200px">
-                
-                <div class="card-body">
-                    <h5 class="card-title"><?php echo $item['title']; ?></h5>
-                    <p class="card-text">Categoria: <?php echo $item['category']; ?></p>
-                    <p class="card-text">Descrição: <?php echo $item['description']; ?></p>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="<?php echo escape($item['image']); ?>" class="card-img-top object-fit-cover"
+                        alt="<?php echo escape($item['title']); ?>" width="100%" height="200px">
+
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo $item['title']; ?></h5>
+                        <p class="card-text">Categoria: <?php echo $item['category']; ?></p>
+                        <p class="card-text">Descrição: <?php echo $item['description']; ?></p>
+                    </div>
                 </div>
             </div>
-        </div>
         <?php endforeach; ?>
     </div>
 </div>
 
-<?php
-include 'includes/footer.php';
-?>
+<?php include 'includes/footer.php'; ?>
