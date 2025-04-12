@@ -4,6 +4,8 @@ session_start();
 include 'data/items.php';
 include 'functions/helpers.php';
 
+$items = $_SESSION['items'] ?? $items;
+
 $itemId = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 
 $item = null;
